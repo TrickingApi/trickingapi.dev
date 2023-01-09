@@ -23,15 +23,21 @@ export default function Home() {
           </p>
         </div>
         <div className={styles.center}>
-          <h1>Tricking API</h1>
+          <h1 className={inter.className}>Tricking API</h1>
           <div className={styles.thirteen}>
-            <h2>v0.1</h2>
+            <h2 className={inter.className}>v0.1</h2>
           </div>
           <br/>
         </div>
         <div className={styles.center}>
+          <p className={inter.className}>In pursuit of a complete database of tricks.</p>
+        </div>
+        <div className={styles.center}>
+          <h3 className={inter.className}>A lightweight consumption-only REST API for <a href='https://en.wikipedia.org/wiki/Tricking_(martial_arts)'>Tricking</a></h3>
+        </div>
+        <div className={styles.center}>
           <p className={inter.className}>
-            We&apos;re still in the early phases of development so data is sparse. <br/>Feel free to join the discord to stay up-to-date on releases and how to contribute to the database!
+            We&apos;re still in the early phases of development so data is sparse. Feel free to join the discord to stay up-to-date on releases and how to contribute to the database!
           </p>
         </div>
         <div className={styles.grid}>
@@ -43,7 +49,7 @@ export default function Home() {
               Docs <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Find in-depth information about TrickingAPI`&apos;`s features.
+              Find in-depth information about TrickingAPI&apos;s features.
             </p>
           </Link>
 
@@ -57,7 +63,7 @@ export default function Home() {
               Contribute <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Contribute to the Tricking API Projeect!
+              Contribute to the Tricking API Project!
             </p>
           </a>
 
