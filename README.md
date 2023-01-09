@@ -1,2 +1,2 @@
-# trickingapi.com
+# trickingapi.dev
 The TrickingAPI Documentation Website
