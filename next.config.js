@@ -1,3 +1,4 @@
+const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -10,6 +11,9 @@ const nextConfig = {
     ]
   },
   transpilePackages: ['react-syntax-highlighter', 'swagger-client', 'swagger-ui-react'],
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
 }
 
 module.exports = nextConfig

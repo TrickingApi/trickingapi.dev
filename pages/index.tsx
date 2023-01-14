@@ -2,7 +2,8 @@ import Head from 'next/head'
 // @ts-ignore
 import { Inter } from '@next/font/google'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
+import ApiExplorer from '../components/ApiExplorer/ApiExplorer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,8 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Try it out by entering in your browser&nbsp;
-            <code className={styles.code}>https://api.trickingapi.dev/tricks</code>
+            <code className={styles.code}>https://api.trickingapi.dev/tricks</code> 
+            or
           </p>
         </div>
         <div className={styles.center}>
@@ -39,6 +41,9 @@ export default function Home() {
           <p className={inter.className}>
             We&apos;re still in the early phases of development so data is sparse. Feel free to join the discord to stay up-to-date on releases and how to contribute to the database!
           </p>
+        </div>
+        <div className={styles.center}>
+          <ApiExplorer/>
         </div>
         <div className={styles.grid}>
           <Link

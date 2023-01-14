@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import SwaggerUI from 'swagger-ui-react';
-import "swagger-ui-react/swagger-ui.css"
+import "swagger-ui-react/swagger-ui.scss"
 
 type DocsProps = {
   swagger: {}
