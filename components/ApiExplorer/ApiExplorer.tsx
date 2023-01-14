@@ -5,14 +5,17 @@ import LinkButton from '../LinkButton/LinkButton';
 import styles from './ApiExplorer.module.scss';
 import Input from './Input';
 import JsonViewer from '../JSONViewer/JSONViewer';
+// @ts-ignore
+import { Inter } from '@next/font/google'
+
+const inter = Inter({ subsets: ['latin'] });
 
 const ApiExplorer: FunctionComponent = () => {
-  const [resourceUrl, setResourceUrl] = useState('/tricks/pop360');
+  const [resourceUrl, setResourceUrl] = useState('tricks/pop360');
   const [resourceData, setResourceData] = useState(pop360);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState('');
 
   const BASE_API_URL = '/api/';
 
@@ -42,24 +45,25 @@ const ApiExplorer: FunctionComponent = () => {
         setError(error);
     });
   }
+
+  const getMessage = () => {
+    if (notFound) {
+      return 'Resource not found';
+    } else if (error) {
+      return `An error occurred: ${error}`;
+    } else if (isLoading) {
+      return 'Loading...';
+    } else if (resourceData) {
+      return `Hooray, loaded ${resourceData.name || resourceUrl}`;
+    } else {
+      return 'An unknown error has occurred, please file an issue with https://github.com/TrickingApi/trickingapi.dev/issues and will we try to triage.';
+    }
+  }
+
   // Fetch the new data whenever the resourceUrl changes
   useEffect(() => {
     fetchData(resourceUrl);
   }, [resourceUrl]);
-
-  const getMessage = () => {
-    if (notFound) {
-      setMessage('Resource not found');
-    } else if (error) {
-      setMessage(`An error occurred: ${error}`);
-    } else if (isLoading) {
-      setMessage('Loading...');
-    } else if (resourceData) {
-      setMessage(`Hooray, loaded resource for ${resourceData.name || resourceUrl}`);
-    } else {
-      setMessage('An unknown error has occurred, please file an issue with https://github.com/TrickingApi/trickingapi.dev/issues and will we try to triage.');
-    }
-  }
 
   const Hint = ({value}:any) => (
     <LinkButton
@@ -71,31 +75,26 @@ const ApiExplorer: FunctionComponent = () => {
   );
 
   return (
-    <div className='api-explorer'>
-      <h2>Try it out now!</h2>
+    <div className={styles.container}>
+      <h2 className={inter.className}>Try it out now!</h2>
       <Input
           defaultValue={resourceUrl}
-          urlPrefix={BASE_API_URL}
           onSubmit={(value: string) => setResourceUrl(value)}
       />
-            <p className={styles.hint_sentence}>
-                Need a hint? Try <Hint value="pokemon/ditto" />,{' '}
-                <Hint value='pokemon-species/aegislash' />, <Hint value="type/3" />,{' '}
-                <Hint value='ability/battle-armor' />, or{' '}
-                <Hint value='pokemon?limit=100000&offset=0' />.
-            </p>
-            <p>
-                Direct link to results:{' '}
-                <a href={BASE_API_URL + resourceUrl} target='_blank' rel='noreferrer'>
-                    {BASE_API_URL + resourceUrl}
-                </a>
-            </p>
-            <h2 className={styles.message}>{message}</h2>
+      <p className={`${styles.hint_sentence} ${inter.className}`}>
+        Need a hint? Try <Hint value="tricks/btwist" />{' '}
+        <Hint value='categories/vert-kick' /> <Hint value="tricks" />{' '}
+        <Hint value='categories/tricks' />
+      </p>
+      <h3 className={`${styles.directlink} ${inter.className}`}>
+          Direct link to results:{' '}
+          <a href={BASE_API_URL + resourceUrl} target='_blank' rel='noreferrer'>
+              {BASE_API_URL + resourceUrl}
+          </a>
+      </h3>
+      <p className={`${styles.message} ${inter.className}`}>{getMessage()}</p>
 
-            <JsonViewer data={resourceData} />
-      <style jsx>{`
-
-      `}</style>
+      <JsonViewer data={resourceData} />
     </div>
   );
 }

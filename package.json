@@ -25,6 +25,7 @@
     "sass-loader": "^13.2.0",
     "swagger-ui-react": "^4.15.5",
     "tricking-ts": "^0.1.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "webpack": "^5.0.0"
   }
 }

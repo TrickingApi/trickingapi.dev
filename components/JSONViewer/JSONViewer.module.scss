@@ -2,6 +2,8 @@
 
 .jsonviewer {
     border-radius: 5px;
+    min-width: 100%;
+    width: 100%;
 
     .toolbar {
         padding: 0.25em 0.5em;
@@ -19,6 +21,7 @@
         resize: vertical;
         font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
         font-size: 0.8em;
+        min-width: 100%;
 
         @media (max-width: 30rem) {
             font-size: 0.7em;
@@ -26,7 +29,7 @@
 
         .code {
             height: max-content;
-            width: max-content;
+            width: 100%;
             line-height: 1.4;
             margin: 0;
         }
