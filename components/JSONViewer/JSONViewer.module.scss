@@ -35,7 +35,7 @@
         }
 
         ul {
-            background-color: #fbfbfb !important; /* HACK: I cannot understand how base16 works in tomorrow.json, it seems a reversed HEX*/
+            background-color: #fbfbfb;
         }
     }
 }
@@ -46,4 +46,20 @@
     max-height: 0;
     max-width: 0;
     position: absolute;
+}
+
+@media (prefers-color-scheme: dark) {
+    .jsonviewer {
+        .toolbar {
+            background-color: #3c4257;
+        }
+
+        .json {
+            background-color: #3c4257;
+            ul {
+                background-color: #3c4257;
+            }
+        }
+    }
+
 }

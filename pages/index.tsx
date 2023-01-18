@@ -17,13 +17,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Try it out by entering in your browser&nbsp;
-            <code className={styles.code}>https://api.trickingapi.dev/tricks</code> 
-            or
-          </p>
-        </div>
         <div className={styles.center}>
           <h1 className={inter.className}>Tricking API</h1>
           <div className={styles.thirteen}>
@@ -35,7 +28,7 @@ export default function Home() {
           <p className={inter.className}>In pursuit of a complete database of tricks.</p>
         </div>
         <div className={styles.center}>
-          <h3 className={inter.className}>A lightweight consumption-only REST API for <a href='https://en.wikipedia.org/wiki/Tricking_(martial_arts)'>Tricking</a></h3>
+          <h3 className={inter.className}>A lightweight consumption-only REST API for the <a href='https://en.wikipedia.org/wiki/Tricking_(martial_arts)'>Tricking</a> vocabulary.</h3>
         </div>
         <div className={styles.center}>
           <p className={inter.className}>
