@@ -5,14 +5,14 @@ import styles from './Collapsible.module.scss';
 // @ts-ignore
 import { Inter } from '@next/font/google'
 
-type CollapsibleProps = {
+interface ICollapsibleProps {
   children: ReactNode;
   title: string;
 };
 
 const inter = Inter({ subsets: ['latin'] });
 
-const Collapsible: FunctionComponent<CollapsibleProps> = (props) => {
+const Collapsible: FunctionComponent<ICollapsibleProps> = (props) => {
   const [open, setOpen] = useState(false);
 
   const toggleContent = () => {

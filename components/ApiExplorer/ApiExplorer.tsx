@@ -1,6 +1,5 @@
 import React, {useState, useEffect, FunctionComponent} from 'react';
 import pop360 from './pop360.json';
-import { Trick, TrickCategory } from 'tricking-ts'
 import LinkButton from '../LinkButton/LinkButton';
 import styles from './ApiExplorer.module.scss';
 import Input from './Input';

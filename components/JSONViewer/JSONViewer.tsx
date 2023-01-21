@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, FunctionComponent} from 'react';
 import { JSONTree, KeyPath } from 'react-json-tree';
 import styles from './JSONViewer.module.scss';
 
-const theme = {
+const defaultTheme = {
   scheme: 'monokai',
   author: 'wimer hazenberg (http://www.monokai.nl)',
   base00: '#272822',
@@ -23,13 +23,17 @@ const theme = {
   base0F: '#cc6633',
 };
 
+interface IViewerProps {
+  data: any;
+  theme?: any;
+}
 
-export const DynamicViewer = ({data}: any) => {
+export const DynamicViewer: FunctionComponent<IViewerProps> = (props) => {
   return (
       <JSONTree
-        data={data}
+        data={props.data}
         hideRoot
-        theme={theme}
+        theme={props.theme}
         shouldExpandNodeInitially={(keyPath: KeyPath, data: any) =>
           // Collapse long arrays, large objects (except array items),
           // and arrays that are direct children of array items
@@ -44,7 +48,7 @@ export const DynamicViewer = ({data}: any) => {
   );
 }
 
-const JsonViewer = ({data}: any) => {
+const JsonViewer: FunctionComponent<IViewerProps> = (props) => {
   const [isMounted, setIsMounted] = useState(false);
   const [viewRaw, setViewRaw] = useState(true);
 
@@ -53,7 +57,7 @@ const JsonViewer = ({data}: any) => {
       setViewRaw(false);
   }, []);
 
-  const jsonString = JSON.stringify(data, null, 2) || '';
+  const jsonString = JSON.stringify(props.data, null, 2) || '';
   const jsonSize = new TextEncoder().encode(jsonString).length / 1000; // kB
   const jsonLines = (jsonString.match(/\r?\n/g) || '').length + 1;
 
@@ -66,7 +70,9 @@ const JsonViewer = ({data}: any) => {
             </pre>
         ) : (
           <DynamicViewer
-            data={data}/>
+            data={props.data}
+            theme={props.theme ?? defaultTheme}
+            />
         )}
       </div>
       <div className={styles.toolbar}>

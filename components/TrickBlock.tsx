@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Trick } from 'tricking-ts';
-//TODO: visual representation of a trick
-const TrickBlock = () => {
-  <></>
+import JsonViewer from './JSONViewer/JSONViewer';
+
+interface ITrickBlockProps {
+  trick: Trick;
+}
+const TrickBlock: FunctionComponent<ITrickBlockProps> = (props) => {
+  return (
+    <JsonViewer data={props.trick}/>
+  );
 }
 
 export default TrickBlock;
