@@ -1,0 +1,59 @@
+$mobile-breakpoint: 30em;
+
+.collapsible {
+  cursor: pointer;
+  padding: 0 10px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  background-color: #eee;
+  border: 0;
+}
+
+.collapsible_title {
+  margin: 0;
+  float: left;
+
+  h3 {
+    display: inline-block;
+    font-size: 18px;
+  }
+}
+
+.collapsible_icon {
+  float: right;
+  display: none;
+  padding: 18px;
+  font-size: 24px;
+
+  .open {
+    display: block;
+  }
+}
+
+.collapse_content {
+  width: 100%;
+  text-align: left;
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 16px;
+  max-height: 0px;
+  transition: max-height 0.2s ease-out;
+  transition: padding 0.2s ease-out;
+
+  .active {
+    max-height: 300px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .collapse_content.active {
+    max-height: 450px;
+  }
+
+  .collapsible.title {
+    max-width: 150px;
+  }
+}
