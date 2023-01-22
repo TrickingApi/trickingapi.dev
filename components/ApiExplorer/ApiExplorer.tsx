@@ -6,6 +6,7 @@ import Input from './Input';
 import JsonViewer from '../JSONViewer/JSONViewer';
 // @ts-ignore
 import { Inter } from '@next/font/google'
+import { BASE_API_URL } from '../../utils/constants';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,8 +16,6 @@ const ApiExplorer: FunctionComponent = () => {
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  const BASE_API_URL = '/api/';
 
   const fetchData = (resourceUrl: string) => {
     setIsLoading(true);

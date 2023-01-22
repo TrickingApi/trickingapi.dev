@@ -4,10 +4,46 @@ import { Inter } from '@next/font/google'
 import Link from 'next/link'
 import styles from '../styles/Home.module.scss'
 import ApiExplorer from '../components/ApiExplorer/ApiExplorer'
+import { useEffect, useState } from 'react'
+import { Trick } from 'tricking-ts';
+import { BASE_API_URL } from '../utils/constants'
+import TrickBlock from '../components/TrickBlock'
+import Collapsible from '../components/Collapsible/Collapsible'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [tricks, setTricks] = useState<Trick[]>([]);
+
+  const fetchTricks = () => {
+    fetch(`${BASE_API_URL}/tricks`)
+      .then((res: Response) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      }).then((data: Map<string, Trick>) => {
+        console.log(typeof data);
+        console.log(data);
+        const results: Trick[] = [];
+        Object.entries(data).forEach((value: [key: string, trick: Trick]) => {
+          results.push(value[1]);
+        });
+        setTricks(results);
+      });
+  }
+
+  useEffect(() => {
+    fetchTricks();
+  }, []);
+
+  const getTrickBlocks = () => tricks.map((trick) => {
+    return (
+      <Collapsible key={trick.id} title={trick.name}>
+        <TrickBlock trick={trick}/>
+      </Collapsible>
+    );
+  });
+
   return (
     <>
       <Head>
@@ -79,6 +115,15 @@ export default function Home() {
             </p>
           </a>
         </div>
+        {
+          false
+          && <section>
+              <div className={styles.center}>
+                <h2 className={inter.className}>All Tricks</h2>
+                {getTrickBlocks()}
+              </div>
+            </section>
+        }
       </main>
     </>
   )
