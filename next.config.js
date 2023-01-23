@@ -7,7 +7,16 @@ const nextConfig = {
       {
         source: '/api/:path*',
         destination: 'https://api.trickingapi.dev/:path*',
-      },
+      }
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/docs',
+        destination: 'https://docs.trickingapi.dev',
+        permanent: true
+      }
     ]
   },
   transpilePackages: ['react-syntax-highlighter', 'swagger-client', 'swagger-ui-react'],
