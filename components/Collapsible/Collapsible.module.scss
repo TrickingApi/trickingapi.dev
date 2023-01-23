@@ -2,22 +2,34 @@ $mobile-breakpoint: 30em;
 
 .collapsible {
   cursor: pointer;
-  padding: 0 10px;
   width: 100%;
   text-align: left;
   outline: none;
-  background-color: #eee;
-  border: 0;
+  margin: 1rem auto;
+  padding: 0rem 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0.1);
+  border: 1px solid rgba(var(--card-border-rgb), 0.2);
+  transition: background 200ms, border 200ms;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .collapsible:hover {
+    background: rgba(var(--card-rgb), 0.3);
+    border: 1px solid rgba(var(--card-border-rgb), 0.35);
+  }
 }
 
 .collapsible_title {
   margin: 0;
   float: left;
-
-  h3 {
-    display: inline-block;
-    font-size: 18px;
-  }
+  padding: 18px;
+  vertical-align: middle;
+}
+.collapsible_title h3 {
+  display: inline-block;
+  font-size: 18px;
 }
 
 .collapsible_icon {
@@ -25,10 +37,11 @@ $mobile-breakpoint: 30em;
   display: none;
   padding: 18px;
   font-size: 24px;
+  vertical-align: baseline;
+}
 
-  .open {
-    display: block;
-  }
+.collapsible_icon.open {
+  display: block;
 }
 
 .collapse_content {
@@ -41,11 +54,13 @@ $mobile-breakpoint: 30em;
   max-height: 0px;
   transition: max-height 0.2s ease-out;
   transition: padding 0.2s ease-out;
+}
 
-  .active {
-    max-height: 300px;
-    padding: 10px;
-  }
+.collapse_content.active {
+  max-height: 500px;
+  padding: 10px;
+  height: auto;
+  overflow: scroll;
 }
 
 @media (max-width: $mobile-breakpoint) {

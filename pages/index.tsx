@@ -116,11 +116,14 @@ export default function Home() {
           </a>
         </div>
         {
-          false
+          tricks.length > 0
           && <section>
               <div className={styles.center}>
-                <h2 className={inter.className}>All Tricks</h2>
-                {getTrickBlocks()}
+                <div className={styles.tricks}>
+                  <h2 className={inter.className}>Current Tricks</h2>
+                  <br/>
+                  {getTrickBlocks()}
+                </div>
               </div>
             </section>
         }

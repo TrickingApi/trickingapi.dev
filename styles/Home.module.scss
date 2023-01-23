@@ -46,6 +46,11 @@
   max-width: 100%;
 }
 
+.tricks {
+  display: flex;
+  flex-direction: column;
+}
+
 .card {
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
