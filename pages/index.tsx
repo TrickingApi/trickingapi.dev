@@ -1,14 +1,15 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Image from 'next/image';
 // @ts-ignore
-import { Inter } from '@next/font/google'
-import Link from 'next/link'
-import styles from '../styles/Home.module.scss'
-import ApiExplorer from '../components/ApiExplorer/ApiExplorer'
-import { useEffect, useState } from 'react'
+import { Inter } from '@next/font/google';
+import Link from 'next/link';
+import styles from '../styles/Home.module.scss';
+import ApiExplorer from '../components/ApiExplorer/ApiExplorer';
+import { useEffect, useState } from 'react';
 import { Trick } from 'tricking-ts';
-import { BASE_API_URL } from '../utils/constants'
-import TrickBlock from '../components/TrickBlock'
-import Collapsible from '../components/Collapsible/Collapsible'
+import { BASE_API_URL } from '../utils/constants';
+import TrickBlock from '../components/TrickBlock';
+import Collapsible from '../components/Collapsible/Collapsible';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -53,6 +54,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+      <Image src='/trickingAPILogo.png' width='128' height='128' alt={'Tricking API Logo'}/>
         <div className={styles.center}>
           <h1 className={inter.className}>Tricking API</h1>
           <div className={styles.thirteen}>

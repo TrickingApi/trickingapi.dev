@@ -178,8 +178,12 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+  .main {
+    padding: 0rem;
+  }
+
   .content {
-    padding: 4rem;
+    padding: 4rem 0;
   }
 
   .grid {
@@ -198,7 +202,7 @@
   }
 
   .center {
-    padding: 8rem 0 6rem;
+    padding: 0rem;
   }
 
   .center::before {
