@@ -81,8 +81,8 @@ const ApiExplorer: FunctionComponent = () => {
       />
       <p className={`${styles.hint_sentence} ${inter.className}`}>
         Need a hint? Try <Hint value="tricks/btwist" />{' '}
-        <Hint value='categories/vert-kick' /> <Hint value="tricks" />{' '}
-        <Hint value='categories/tricks' />
+        <Hint value='categories/vert-kick' />{' '}<Hint value="tricks" />{' '}
+        <Hint value='categories/tricks' />{' '}<Hint value="tricks/names"/>{' '}
       </p>
       <h3 className={`${styles.directlink} ${inter.className}`}>
           Direct link to results:{' '}
