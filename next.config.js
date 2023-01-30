@@ -19,7 +19,7 @@ const nextConfig = {
       }
     ]
   },
-  transpilePackages: ['react-syntax-highlighter', 'swagger-client', 'swagger-ui-react'],
+  transpilePackages: ['react-syntax-highlighter', 'swagger-client', 'swagger-ui-react', '@trickingapi/tricks-core-data'],
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },

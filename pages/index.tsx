@@ -5,37 +5,14 @@ import { Inter } from '@next/font/google';
 import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 import ApiExplorer from '../components/ApiExplorer/ApiExplorer';
-import { useEffect, useState } from 'react';
-import { Trick } from '@trickingapi/tricking-ts';
-import { BASE_API_URL } from '../utils/constants';
 import TrickBlock from '../components/TrickBlock';
 import Collapsible from '../components/Collapsible/Collapsible';
+import * as Tricks from '@trickingapi/tricks-core-data/tricks';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [tricks, setTricks] = useState<Trick[]>([]);
-
-  const fetchTricks = () => {
-    fetch(`${BASE_API_URL}/tricks`)
-      .then((res: Response) => {
-        if (res.status === 200) {
-          return res.json();
-        }
-      }).then((data: Map<string, Trick>) => {
-        const results: Trick[] = [];
-        Object.entries(data).forEach((value: [key: string, trick: Trick]) => {
-          results.push(value[1]);
-        });
-        setTricks(results);
-      });
-  }
-
-  useEffect(() => {
-    fetchTricks();
-  }, []);
-
-  const getTrickBlocks = () => tricks.map((trick) => {
+  const trickBlocks = Object.entries(Tricks).map(([, trick]) => {
     return (
       <Collapsible key={trick.id} title={trick.name}>
         <TrickBlock trick={trick}/>
@@ -115,18 +92,15 @@ export default function Home() {
             </p>
           </a>
         </div>
-        {
-          tricks.length > 0
-          && <section>
-              <div className={styles.center}>
-                <div className={styles.tricks}>
-                  <h2 className={inter.className}>Current Tricks</h2>
-                  <br/>
-                  {getTrickBlocks()}
-                </div>
-              </div>
-            </section>
-        }
+        <section>
+          <div className={styles.center}>
+            <h2 className={inter.className}>Current Tricks</h2>
+            <br/>
+            <div className={styles.tricks}>
+              {trickBlocks}
+            </div>
+          </div>
+        </section>
       </main>
     </>
   )
