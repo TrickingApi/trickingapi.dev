@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 import ApiExplorer from '../components/ApiExplorer/ApiExplorer';
 import { useEffect, useState } from 'react';
-import { Trick } from 'tricking-ts';
+import { Trick } from '@trickingapi/tricking-ts';
 import { BASE_API_URL } from '../utils/constants';
 import TrickBlock from '../components/TrickBlock';
 import Collapsible from '../components/Collapsible/Collapsible';
@@ -23,8 +23,6 @@ export default function Home() {
           return res.json();
         }
       }).then((data: Map<string, Trick>) => {
-        console.log(typeof data);
-        console.log(data);
         const results: Trick[] = [];
         Object.entries(data).forEach((value: [key: string, trick: Trick]) => {
           results.push(value[1]);

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Trick } from 'tricking-ts';
+import { Trick } from '@trickingapi/tricking-ts';
 import JsonViewer from './JSONViewer/JSONViewer';
 
 interface ITrickBlockProps {
