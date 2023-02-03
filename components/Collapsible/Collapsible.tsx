@@ -20,7 +20,7 @@ const Collapsible: FunctionComponent<ICollapsibleProps> = (props) => {
   };
 
   return (
-    <div className='collapsible-group'>
+    <div className={styles.collapsible_group}>
       <button className={styles.collapsible} onClick={toggleContent}>
         <div className={styles.collapsible_title}>
           <h3 className={inter.className}>{props.title}</h3>

@@ -292,6 +292,15 @@
     axios-cache-interceptor "^1.0.0"
     pino "^8.8.0"
 
+"@trickingapi/tricking-ts@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@trickingapi/tricking-ts/-/tricking-ts-0.1.2.tgz#f391cd2515bf0500f8ef56919bc77c5de9045d81"
+  integrity sha512-auv4DFx9t73o61gd4jBJ8oqtGIwIVz0CbI2txkyzrwEN0wgThtRjPtv4+G1JcmPD1paThNMKXVYOoHiOFbMzDA==
+  dependencies:
+    axios "^1.2.2"
+    axios-cache-interceptor "^1.0.0"
+    pino "^8.8.0"
+
 "@trickingapi/tricks-core-data@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@trickingapi/tricks-core-data/-/tricks-core-data-0.1.1.tgz#0fba2e731686617864f3bc0a9d46f29125cdf15e"

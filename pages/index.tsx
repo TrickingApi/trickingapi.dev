@@ -8,10 +8,16 @@ import ApiExplorer from '../components/ApiExplorer/ApiExplorer';
 import TrickBlock from '../components/TrickBlock';
 import Collapsible from '../components/Collapsible/Collapsible';
 import * as Tricks from '@trickingapi/tricks-core-data/tricks';
+import { TricksClient } from '@trickingapi/tricking-ts';
+import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [tricksCount, setTricksCount] = useState(0);
+  const [loading, setLoading] = useState(true);
   const trickBlocks = Object.entries(Tricks).map(([, trick]) => {
     return (
       <Collapsible key={trick.id} title={trick.name}>
@@ -19,6 +25,14 @@ export default function Home() {
       </Collapsible>
     );
   });
+
+  useEffect(() => {
+    const client = new TricksClient();
+    client.getAllTrickNames().then((trickNames) => {
+      setTricksCount(Object.entries(trickNames).length);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
@@ -29,7 +43,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <Image src='/trickingAPILogo.png' width='128' height='128' alt={'Tricking API Logo'}/>
+      <Image src='/trickingAPILogo.png' width='128' height='128' alt={'Tricking API Logo'} priority/>
         <div className={styles.center}>
           <h1 className={inter.className}>Tricking API</h1>
           <div className={styles.thirteen}>
@@ -42,6 +56,11 @@ export default function Home() {
         </div>
         <div className={styles.center}>
           <h3 className={inter.className}>A lightweight consumption-only REST API for the <a href='https://en.wikipedia.org/wiki/Tricking_(martial_arts)'>Tricking</a> vocabulary.</h3>
+        </div>
+        <div className={styles.center}>
+          <p className={inter.className}>
+            Now serving <span className={styles.bold}>{loading ? <FontAwesomeIcon icon={faEllipsis} pulse/> : tricksCount}</span> tricks.
+          </p>
         </div>
         <div className={styles.center}>
           <p className={inter.className}>
@@ -95,10 +114,9 @@ export default function Home() {
         <section>
           <div className={styles.center}>
             <h2 className={inter.className}>Current Tricks</h2>
-            <br/>
-            <div className={styles.tricks}>
-              {trickBlocks}
-            </div>
+          </div>  
+          <div className={styles.tricks}>
+            {trickBlocks}
           </div>
         </section>
       </main>
