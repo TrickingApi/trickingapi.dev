@@ -11,7 +11,7 @@ import * as Tricks from '@trickingapi/tricks-core-data/tricks';
 import { TricksClient } from '@trickingapi/tricking-ts';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -119,6 +119,16 @@ export default function Home() {
             {trickBlocks}
           </div>
         </section>
+        <div className={`${styles.center} ${styles.footer}`}>
+          <div>
+            <a href='https://github.com/trickingapi/trickingapi.dev'>Edit this site <FontAwesomeIcon icon={faCode}/></a>
+          </div>
+          <div>
+            <p className={inter.className}>  
+              Made with ❤️ by <a href='mikaelmantis.com'>Mikael Mantis</a>
+            </p>
+          </div>
+        </div>
       </main>
     </>
   )

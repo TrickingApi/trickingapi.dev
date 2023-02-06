@@ -107,6 +107,16 @@
   transform: translateZ(0);
 }
 
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  flex-direction: column;
+}
+
 .logo,
 .thirteen {
   position: relative;
