@@ -12,6 +12,7 @@ import { TricksClient } from '@trickingapi/tricking-ts';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import RouteBlock from '../components/RouteBlock/RouteBlock';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -110,6 +111,23 @@ export default function Home() {
               Join the TrickingAPI discord to ask questions, chat with contributors about the API, discuss issues, and propose features!
             </p>
           </a>
+        </div>
+        <div className={styles.center}>
+          <h2 className={inter.className}>API Routes</h2>
+        </div>
+        <div className={styles.grid}>
+          <RouteBlock method='GET' path='/tricks' description='Gets all tricks.'/>
+          <RouteBlock method='GET' path='/tricks/:id' description='Gets a specific trick by id.'/>
+          <RouteBlock method='GET' path='/tricks/names' description='Gets all trick names.'/>
+          <RouteBlock method='GET' path='/categories' description='Gets all categories.'/>
+          <RouteBlock method='GET' path='/categories/:name' description='Gets a specific category by name.'/>
+          <RouteBlock method='GET' path='/categories/tricks' description='Gets all tricks belonging to a category.'/>
+          <RouteBlock method='GET' path='/transitions' description='Gets all transitions along with descriptions and examples.'/>
+          <RouteBlock method='GET' path='/transitions/ids' description='Gets all transition ids.'/>
+          <RouteBlock method='GET' path='/transitions/:id' description='Gets a specific transition by id.'/>
+          <RouteBlock method='GET' path='/landingstances' description='Gets all landing stances along with descriptions and possible transitions from those stances.'/>
+          <RouteBlock method='GET' path='/landingstances/ids' description='Gets all landing stance ids.'/>
+          <RouteBlock method='GET' path='/landingstances/:id' description='Gets a specific landing stance object by id.'/>
         </div>
         <section>
           <div className={styles.center}>
