@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Box, Card, Divider, Paragraph, Text }from 'dracula-ui';
-
+import { getColorFromPath } from '../../utils';
 interface IRouteBlockProps {
   path: string;
   method: string;
@@ -9,32 +9,16 @@ interface IRouteBlockProps {
   exampleResponse?: string;
 }
 
-function getCardColor(path: string) {
-  const base = path.split("/")[1];
-  switch (base) {
-    case "tricks":
-      return "cyan";
-    case "categories":
-      return "orange";
-    case "transitions":
-      return "pink";
-    case "landingstances":
-      return "red";
-    default:
-      return "purple";
-  }
-}
-
 const RouteBlock: FunctionComponent<IRouteBlockProps> = (props) => {
   return (
-    <Card p="sm" m="sm" color={getCardColor(props.path)}>
+    <Card p="sm" m="sm" color={getColorFromPath(props.path)}>
       <Box>
         <Box p="xs">
           <Text size="lg" weight="bold" color="grey">{props.method}</Text>
           <Text size="lg" weight="bold" color="black">{props.path}</Text>
         </Box>
         <Box>
-          <Divider color={getCardColor(props.path)} />
+          <Divider color={getColorFromPath(props.path)} />
         </Box>
         <Box p="xs">
           <Paragraph size="sm" color="blackSecondary">{props.description}</Paragraph>
