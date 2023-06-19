@@ -65,11 +65,9 @@ const ApiExplorer: FunctionComponent = () => {
 
   const Hint = ({value}:any) => (
     <LinkButton
-        className={styles.hint}
         onClick={() => setResourceUrl(value)}
-    >
-        {value}
-    </LinkButton>
+        value={value}
+    />
   );
 
   return (
@@ -80,9 +78,9 @@ const ApiExplorer: FunctionComponent = () => {
           onSubmit={(value: string) => setResourceUrl(value)}
       />
       <p className={`${styles.hint_sentence} ${inter.className}`}>
-        Need a hint? Try <Hint value="tricks/butterflyTwist" />{' '}
-        <Hint value='categories/vert-kick' />{' '}<Hint value="tricks" />{' '}
-        <Hint value='categories/tricks' />{' '}<Hint value="tricks/names"/>{' '}
+        Need a hint? Try <Hint value="/tricks/butterflyTwist" />{' '}
+        <Hint value='/categories/vert-kick' />{' '}<Hint value="/tricks" />{' '}
+        <Hint value='/categories/tricks' />{' '}<Hint value="/tricks/names"/>{' '}
       </p>
       <h3 className={`${styles.directlink} ${inter.className}`}>
           Direct link to results:{' '}
