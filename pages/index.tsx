@@ -1,20 +1,20 @@
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from "next/head";
+import Image from "next/image";
 // @ts-ignore
-import { Inter } from '@next/font/google';
-import Link from 'next/link';
-import styles from '../styles/Home.module.scss';
-import ApiExplorer from '../components/ApiExplorer/ApiExplorer';
-import TrickBlock from '../components/TrickBlock';
-import Collapsible from '../components/Collapsible/Collapsible';
-import * as Tricks from '@trickingapi/tricks-core-data/tricks';
-import { TricksClient } from '@trickingapi/tricking-ts';
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faEllipsis } from '@fortawesome/free-solid-svg-icons';
-import RouteBlock from '../components/RouteBlock/RouteBlock';
+import { Inter } from "next/font/google";
+import Link from "next/link";
+import styles from "../styles/Home.module.scss";
+import ApiExplorer from "../components/ApiExplorer/ApiExplorer";
+import TrickBlock from "../components/TrickBlock";
+import Collapsible from "../components/Collapsible/Collapsible";
+import * as Tricks from "@trickingapi/tricks-core-data/tricks";
+import { TricksClient } from "@trickingapi/tricking-ts";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCode, faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import RouteBlock from "../components/RouteBlock/RouteBlock";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [tricksCount, setTricksCount] = useState(0);
@@ -22,7 +22,7 @@ export default function Home() {
   const trickBlocks = Object.entries(Tricks).map(([, trick]) => {
     return (
       <Collapsible key={trick.id} title={trick.name}>
-        <TrickBlock trick={trick}/>
+        <TrickBlock trick={trick} />
       </Collapsible>
     );
   });
@@ -39,43 +39,67 @@ export default function Home() {
     <>
       <Head>
         <title>TrickingApi Documentation</title>
-        <meta name="description" content="Tricking Api Documentation: written with next.js" />
+        <meta
+          name="description"
+          content="Tricking Api Documentation: written with next.js"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <Image src='/trickingAPILogo.png' width='128' height='128' alt={'Tricking API Logo'} priority/>
+        <Image
+          src="/trickingAPILogo.png"
+          width="128"
+          height="128"
+          alt={"Tricking API Logo"}
+          priority
+        />
         <div className={styles.center}>
           <h1 className={inter.className}>Tricking API</h1>
           <div className={styles.thirteen}>
             <h2 className={inter.className}>v0.1</h2>
           </div>
-          <br/>
-        </div>
-        <div className={styles.center}>
-          <p className={inter.className}>In pursuit of a complete database of tricks.</p>
-        </div>
-        <div className={styles.center}>
-          <h3 className={inter.className}>A lightweight consumption-only REST API for the <a href='https://en.wikipedia.org/wiki/Tricking_(martial_arts)'>Tricking</a> vocabulary.</h3>
+          <br />
         </div>
         <div className={styles.center}>
           <p className={inter.className}>
-            Now serving <span className={styles.bold}>{loading ? <FontAwesomeIcon icon={faEllipsis} pulse/> : tricksCount}</span> tricks.
+            In pursuit of a complete database of tricks.
+          </p>
+        </div>
+        <div className={styles.center}>
+          <h3 className={inter.className}>
+            A lightweight consumption-only REST API for the{" "}
+            <a href="https://en.wikipedia.org/wiki/Tricking_(martial_arts)">
+              Tricking
+            </a>{" "}
+            vocabulary.
+          </h3>
+        </div>
+        <div className={styles.center}>
+          <p className={inter.className}>
+            Now serving{" "}
+            <span className={styles.bold}>
+              {loading ? (
+                <FontAwesomeIcon icon={faEllipsis} pulse />
+              ) : (
+                tricksCount
+              )}
+            </span>{" "}
+            tricks.
           </p>
         </div>
         <div className={styles.center}>
           <p className={inter.className}>
-            We&apos;re still in the early phases of development so data is sparse. Feel free to join the discord to stay up-to-date on releases and how to contribute to the database!
+            We&apos;re still in the early phases of development so data is
+            sparse. Feel free to join the discord to stay up-to-date on releases
+            and how to contribute to the database!
           </p>
         </div>
         <div className={styles.center}>
-          <ApiExplorer/>
+          <ApiExplorer />
         </div>
         <div className={styles.grid}>
-          <Link
-            href="/docs"
-            className={styles.card}
-          >
+          <Link href="/docs" className={styles.card}>
             <h2 className={inter.className}>
               Docs <span>-&gt;</span>
             </h2>
@@ -108,7 +132,8 @@ export default function Home() {
               Community <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Join the TrickingAPI discord to ask questions, chat with contributors about the API, discuss issues, and propose features!
+              Join the TrickingAPI discord to ask questions, chat with
+              contributors about the API, discuss issues, and propose features!
             </p>
           </a>
         </div>
@@ -116,38 +141,86 @@ export default function Home() {
           <h2 className={inter.className}>API Routes</h2>
         </div>
         <div className={styles.grid}>
-          <RouteBlock method='GET' path='/tricks' description='Gets all tricks.'/>
-          <RouteBlock method='GET' path='/tricks/:id' description='Gets a specific trick by id.'/>
-          <RouteBlock method='GET' path='/tricks/names' description='Gets all trick names.'/>
-          <RouteBlock method='GET' path='/categories' description='Gets all categories.'/>
-          <RouteBlock method='GET' path='/categories/:name' description='Gets a specific category by name.'/>
-          <RouteBlock method='GET' path='/categories/tricks' description='Gets all tricks belonging to a category.'/>
-          <RouteBlock method='GET' path='/transitions' description='Gets all transitions along with descriptions and examples.'/>
-          <RouteBlock method='GET' path='/transitions/ids' description='Gets all transition ids.'/>
-          <RouteBlock method='GET' path='/transitions/:id' description='Gets a specific transition by id.'/>
-          <RouteBlock method='GET' path='/landingstances' description='Gets all landing stances along with descriptions and possible transitions from those stances.'/>
-          <RouteBlock method='GET' path='/landingstances/ids' description='Gets all landing stance ids.'/>
-          <RouteBlock method='GET' path='/landingstances/:id' description='Gets a specific landing stance object by id.'/>
+          <RouteBlock
+            method="GET"
+            path="/tricks"
+            description="Gets all tricks."
+          />
+          <RouteBlock
+            method="GET"
+            path="/tricks/:id"
+            description="Gets a specific trick by id."
+          />
+          <RouteBlock
+            method="GET"
+            path="/tricks/names"
+            description="Gets all trick names."
+          />
+          <RouteBlock
+            method="GET"
+            path="/categories"
+            description="Gets all categories."
+          />
+          <RouteBlock
+            method="GET"
+            path="/categories/:name"
+            description="Gets a specific category by name."
+          />
+          <RouteBlock
+            method="GET"
+            path="/categories/tricks"
+            description="Gets all tricks belonging to a category."
+          />
+          <RouteBlock
+            method="GET"
+            path="/transitions"
+            description="Gets all transitions along with descriptions and examples."
+          />
+          <RouteBlock
+            method="GET"
+            path="/transitions/ids"
+            description="Gets all transition ids."
+          />
+          <RouteBlock
+            method="GET"
+            path="/transitions/:id"
+            description="Gets a specific transition by id."
+          />
+          <RouteBlock
+            method="GET"
+            path="/landingstances"
+            description="Gets all landing stances along with descriptions and possible transitions from those stances."
+          />
+          <RouteBlock
+            method="GET"
+            path="/landingstances/ids"
+            description="Gets all landing stance ids."
+          />
+          <RouteBlock
+            method="GET"
+            path="/landingstances/:id"
+            description="Gets a specific landing stance object by id."
+          />
         </div>
         <section>
           <div className={styles.center}>
             <h2 className={inter.className}>Current Tricks</h2>
-          </div>  
-          <div className={styles.tricks}>
-            {trickBlocks}
           </div>
+          <div className={styles.tricks}>{trickBlocks}</div>
         </section>
         <div className={`${styles.center} ${styles.footer}`}>
           <div>
-            <a href='https://github.com/trickingapi/trickingapi.dev'>Edit this site <FontAwesomeIcon icon={faCode}/></a>
+            <a href="https://github.com/trickingapi/trickingapi.dev">
+              Edit this site <FontAwesomeIcon icon={faCode} />
+            </a>
           </div>
           <div>
-            <p className={inter.className}>  
-              Made with ❤️ by <a href='mikaelmantis.com'>Mikael Mantis</a>
+            <p className={inter.className}>
+              Made with ❤️ by <a href="mikaelmantis.com">Mikael Mantis</a>
             </p>
           </div>
         </div>
       </main>
     </>
-  )
+  );
 }

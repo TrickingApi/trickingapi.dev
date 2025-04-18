@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import ClipboardButton from './ClipboardButton';
 import styles from './Input.module.scss';
 // @ts-ignore
-import { Inter } from '@next/font/google'
+import { Inter } from "next/font/google"
 
 const inter = Inter({ subsets: ['latin'] });
 

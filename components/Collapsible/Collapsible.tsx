@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import styles from './Collapsible.module.scss';
 // @ts-ignore
-import { Inter } from '@next/font/google'
+import { Inter } from "next/font/google"
 
 interface ICollapsibleProps {
   children: ReactNode;

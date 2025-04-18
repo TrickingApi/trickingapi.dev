@@ -5,7 +5,7 @@ import styles from './ApiExplorer.module.scss';
 import Input from './Input';
 import JsonViewer from '../JSONViewer/JSONViewer';
 // @ts-ignore
-import { Inter } from '@next/font/google'
+import { Inter } from "next/font/google"
 import { BASE_API_URL } from '../../utils/constants';
 
 const inter = Inter({ subsets: ['latin'] });
