@@ -1,0 +1,95 @@
+.main {
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem;
+}
+
+.tricksRandomizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+  width: 75vw; /* Fixed width */
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(var(--card-border-rgb), 0.3);
+}
+
+.tricksRandomizer button {
+  background-color: #4263eb;
+  width: 200px;
+  margin: 0 auto;
+  color: rgb(var(--foreground-rgb));
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: calc(var(--border-radius) / 2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.tricksRandomizer button:hover {
+  background-color: #3b5bdb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(66, 99, 235, 0.4);
+}
+
+.tricksRandomizer button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tricksRandomizer button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.tricksRandomizer button:hover::before {
+  left: 100%;
+}
+
+.trickBlock {
+  color: rgb(var(--foreground-rgb));
+  margin: 0;
+  padding: 1.5rem;
+  background-color: rgba(var(--callout-rgb), 0.3);
+  border-radius: calc(var(--border-radius) / 2);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.2);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.aliases {
+  font-size: 0.8rem;
+}
