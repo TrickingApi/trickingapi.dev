@@ -13,3 +13,17 @@ export function getColorFromPath(path: string) {
       return "purple";
   }
 }
+
+export function getRandomDraculaColor() {
+  const colors = [
+    "#ff79c6",
+    "#bd93f9",
+    "#50fa7b",
+    "#ffb86c",
+    "#8be9fd",
+    "#ff5555",
+    "#f1fa8c",
+  ];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
