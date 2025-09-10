@@ -99,6 +99,12 @@ export default function Home() {
           <ApiExplorer />
         </div>
         <div className={styles.grid}>
+          <Link href="/randomizer" className={styles.card}>
+            <h2 className={inter.className}>
+              Randomizer <span>-&gt;</span>
+            </h2>
+            <p className={inter.className}>Get a random trick!</p>
+          </Link>
           <Link href="/docs" className={styles.card}>
             <h2 className={inter.className}>
               Docs <span>-&gt;</span>
